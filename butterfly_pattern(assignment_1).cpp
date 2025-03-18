@@ -142,17 +142,13 @@ void printPattern(int rows){
                     printCharacter = '0';
                 else 
                     printCharacter = '1';
-            
             }
         }
-
         cout<<endl;
     }
 }
 
-
 int main(){
-    
     
     int rows = getRowsFromUser();
     printPattern(rows);
