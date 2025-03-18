@@ -3,18 +3,15 @@
 using namespace std;
 
 int isDigit(char inputCharacter){
-    
-    return (inputCharacter>='0' && inputCharacter<='9');
+    return (inputCharacter >= '0' && inputCharacter <= '9');
 }
 
 int stringToInteger(string inputRows){
-    
     int index = 0;
     int signOfNumber = 1;
     int number = 0;
     
     if(inputRows[index] == '-'){
-        
         signOfNumber = -1;
         index++;
         
@@ -23,8 +20,8 @@ int stringToInteger(string inputRows){
         index++;
     }
     
-    while(inputRows[index]!='\0'){
-        number = number*10 + (inputRows[index] - '0');
+    while(inputRows[index] != '\0'){
+        number = number * 10 + (inputRows[index] - '0');
         index++;
     }
     
@@ -36,8 +33,8 @@ int getRowsFromUser(){
     string inputRows;
     while(true){
         
-        cout<<"Enter the number of rows"<<endl;
-        getline(cin,inputRows);
+        cout << "Enter the number of rows" << endl;
+        getline(cin, inputRows);
         
         if (inputRows.empty()) {
             cout << "Enter a valid positive number.\n";
@@ -49,12 +46,10 @@ int getRowsFromUser(){
         for(int index = 0; index < inputRows.size(); index++){
             
             if(index == 0 && (inputRows[index] == '-' || inputRows[index] == '+')){
-                
                 continue;
             }
             
             if(!isDigit(inputRows[index])){
-                
                 validInputString = false;
                 break;
             }
@@ -63,20 +58,14 @@ int getRowsFromUser(){
         if(validInputString == true){
             rows = stringToInteger(inputRows);
             if(rows > 0){
-                
-                break;
-                
+                break;                
             }else{
-                
                 cout<<"Enter valid positive number"<<endl;
             }
         }else{
-            
-            cout<<"Enter valid positive number"<<endl;
-            
+            cout<<"Enter valid positive number"<<endl; 
         }  
-    }
-    
+    }   
     return rows;
 }
 
@@ -89,19 +78,14 @@ void printPattern(int rows){
     for(int rowIndex=1; rowIndex<=2*rows - 1; rowIndex++){
         
         if(rowIndex <= rows){
-            
             spaces = spaces - 2;
-            stars++;
-            
+            stars++;    
         }else{
-            
             spaces = spaces + 2;
-            stars--;
-            
+            stars--;    
         }
 
-        if(rows % 2 == 1){
-            
+        if(rows % 2 == 1){   
             printCharacter = '1';
             
         }else{
@@ -109,14 +93,12 @@ void printPattern(int rows){
             printCharacter = '0';
         }
         
-        for(int columnIndex = 1; columnIndex <= stars; columnIndex++){
-            
-            cout<<printCharacter<<" ";
+        for(int columnIndex = 1; columnIndex <= stars; columnIndex++){   
+            cout << printCharacter << " ";
             if(printCharacter == '1')
                 printCharacter = '0';
             else 
                 printCharacter = '1';
-            
         }
         
         for(int columnIndex = 1; columnIndex <= spaces; columnIndex++){
@@ -124,20 +106,15 @@ void printPattern(int rows){
         }
 
         if(rowIndex != rows){
-            
             printCharacter = '1';
             
         }else{
-            
             printCharacter = '0';
-            
         }
         
         for(int columnIndex = 1; columnIndex <= stars; columnIndex++){
-            
             if(columnIndex != rows){
-                
-                cout<<printCharacter<<" ";
+                cout << printCharacter << " ";
                 if(printCharacter == '1')
                     printCharacter = '0';
                 else 
